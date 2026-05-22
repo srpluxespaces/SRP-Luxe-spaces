@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRP Luxe Spaces | Luxury Interior & Event Design | Kenya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#F9F1D8',
+                            200: '#F0DEAA',
+                            300: '#E6CB7D',
+                            400: '#D4AF37', // Metallic Gold
+                            500: '#C5A028',
+                            600: '#A6831C',
+                            700: '#876212',
+                        },
+                        luxe: {
+                            black: '#050505',
+                            dark: '#0a0a0a',
+                            gray: '#1a1a1a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'pulse-gold': 'pulseGold 2s infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseGold: {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.7)' },
+                            '70%': { boxShadow: '0 0 0 15px rgba(212, 175, 55, 0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F0DEAA;
+        }
+
+        /* Text Gradient */
+        .text-gradient-gold {
+            background: linear-gradient(to right, #F0DEAA, #D4AF37, #F9F1D8, #D4AF37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        /* Image Hover Zoom */
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Input Autofill Fix */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus {
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+</head>
+<body class="bg-luxe-black text-white font-sans antialiased overflow-x-hidden selection:bg-gold-400 selection:text-luxe-black">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-serif font-bold tracking-widest text-white group">
+                SRP <span class="text-gold-400 group-hover:text-white transition-colors">LUXE</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-10 items-center">
+                <a href="#home" class="text-sm uppercase tracking-widest hover:text-gold-400 transition-colors">Home</a>
+                <a href="#services" class="text-sm uppercase tracking-widest hover:text-gold-400 transition-colors">Services</a>
+                <a href="#portfolio" class="text-sm uppercase tracking-widest hover:text-gold-400 transition-colors">Portfolio</a>
+                <a href="#testimonials" class="text-sm uppercase tracking-widest hover:text-gold-400 transition-colors">Stories</a>
+                <a href="#contact" class="px-6 py-2 border border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-luxe-black transition-all duration-300 uppercase text-sm tracking-widest">Book Now</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gold-400 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-luxe-black bg-opacity-95 z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center space-y-8 md:hidden">
+            <button id="close-menu-btn" class="absolute top-6 right-6 text-gold-400 text-3xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="#home" class="text-2xl font-serif hover:text-gold-400 mobile-link">Home</a>
+            <a href="#services" class="text-2xl font-serif hover:text-gold-400 mobile-link">Services</a>
+            <a href="#portfolio" class="text-2xl font-serif hover:text-gold-400 mobile-link">Portfolio</a>
+            <a href="#testimonials" class="text-2xl font-serif hover:text-gold-400 mobile-link">Stories</a>
+            <a href="#contact" class="text-2xl font-serif text-gold-400 mobile-link">Book Consultation</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Video/Image Placeholder with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2574&auto=format&fit=crop" alt="Luxury Interior" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-luxe-black/80 via-luxe-black/40 to-luxe-black"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <p class="text-gold-400 uppercase tracking-[0.3em] text-sm mb-4 animate-fade-in-up" style="animation-delay: 0.2s;">Nairobi, Kenya</p>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 animate-fade-in-up" style="animation-delay: 0.4s;">
+                Elevate Your <br> <span class="text-gradient-gold italic">Space & Story</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light animate-fade-in-up" style="animation-delay: 0.6s;">
+                Curating bespoke interiors and unforgettable events for Kenya's most discerning clientele. Where opulence meets intention.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center animate-fade-in-up" style="animation-delay: 0.8s;">
+                <a href="#portfolio" class="px-8 py-4 bg-gold-400 text-luxe-black font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300">
+                    View Our Work
+                </a>
+                <a href="https://wa.me/254712345678?text=Hello%20SRP%20Luxe%20Spaces,%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="px-8 py-4 border border-white text-white hover:border-gold-400 hover:text-gold-400 transition-colors duration-300 uppercase tracking-widest flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gold-400">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Introduction / About Snippet -->
+    <section class="py-20 bg-luxe-dark relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 relative">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-gold-400"></div>
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" alt="Interior Detail" class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-gold-400"></div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-gold-400 uppercase tracking-widest text-sm mb-2">The Art of Living</h3>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">Redefining Luxury in <span class="text-gold-400 italic">East Africa</span></h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        At SRP Luxe Spaces, we don't just decorate; we transform environments. Based in the heart of Nairobi, our team of visionary designers and event architects craft spaces that tell your unique story. From lavish residential interiors to breathtaking corporate galas, we infuse every project with a signature blend of contemporary elegance and timeless sophistication.
+                    </p>
+                    <div class="flex gap-8 mt-8">
+                        <div>
+                            <h4 class="text-3xl font-serif text-gold-400">150+</h4>
+                            <p class="text-xs uppercase tracking-widest text-gray-500">Projects Done</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-serif text-gold-400">12</h4>
+                            <p class="text-xs uppercase tracking-widest text-gray-500">Years Experience</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-serif text-gold-400">100%</h4>
+                            <p class="text-xs uppercase tracking-widest text-gray-500">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-luxe-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-gold-400 uppercase tracking-[0.2em] text-sm">What We Do</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mt-2">Bespoke <span class="italic text-gray-400">Services</span></h2>
+                <div class="w-24 h-1 bg-gold-400 mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group relative overflow-hidden bg-luxe-gray p-8 border border-white/5 hover:border-gold-400/50 transition-all duration-500">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-couch text-6xl text-gold-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-gold-400 transition-colors">Interior Styling</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        Full-scale residential and commercial interior design. We manage everything from spatial planning to custom furniture curation, creating cohesive, luxurious environments.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-8">
+                        <li><i class="fas fa-check text-gold-400 mr-2"></i> Space Planning</li>
+                        <li><i class="fas fa-check text-gold-400 mr-2"></i> Furniture Procurement</li>
+                        <li><i class="fas fa-check text-gold-400 mr-2"></i> Art Curation</li>
+                    </ul>
+                    <a href="#contact" class="inline-block text-gold-400 uppercase text-xs tracking-widest border-b border-gold-400 pb-1 hover:text-white hover:border-white transition-colors">Enquire Now</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group relative overflow-hidden bg-luxe-gray p-8 border border-white/5 hover:border-gold-400/50 transition-all duration-500 transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-glass-cheers text-6xl text-gold-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-gold-400 transition-colors">Event Decor</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        Immersive event styling for weddings, corporate functions, and private soirées. We conceptualize and execute themes that leave lasting impressions.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-8">
+                        <li><i class="fas fa-check text-gold-400 mr-2"></i> Wedding Styling</li>
+                        <li><i class="fas fa-check text-gold-400 mr-2"></i> Corporate Galas</li>
+                        <li><i class="fas fa-check text-gold-400 mr-2"></i> Floral Installations</li>
+                    </ul>
+                    <a href="#contact" class="inline-block text-gold-400 uppercase text-xs tracking-widest border-b border-gold-400 pb-1 hover:text-white hover:border-white transition-colors">Plan Your Event</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group relative overflow-hidden bg-luxe-gray p-8 border border-white/5 hover:border-gold-400/50 transition-all duration-500">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-pencil-ruler text-6xl text-gold-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-gold-400 transition-colors">Consultation</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        Expert advice for DIY enthusiasts or those looking to refresh a space. We provide detailed mood boards, shopping lists, and layout guides.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-8">
+                        <li><i class="fas fa-check text-gold-400 mr-2"></i> Mood Boards</li>
+                        <li><i class="fas fa-check text-gold-400 mr-2"></i> Color Schemes</li>
+                        <li><i class="fas fa-check text-gold-400 mr-2"></i> Vendor Referrals</li>
+                    </ul>
+                    <a href="#contact" class="inline-block text-gold-400 uppercase text-xs tracking-widest border-b border-gold-400 pb-1 hover:text-white hover:border-white transition-colors">Book Session</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-luxe-dark">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-gold-400 uppercase tracking-[0.2em] text-sm">Selected Works</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mt-2">The <span class="italic text-gray-400">Portfolio</span></h2>
+                </div>
+                
+                <!-- Filters -->
+                <div class="flex space-x-6 mt-6 md:mt-0" id="portfolio-filters">
+                    <button class="filter-btn active text-white uppercase text-xs tracking-widest border-b-2 border-gold-400 pb-1" data-filter="all">All</button>
+                    <button class="filter-btn text-gray-500 hover:text-white uppercase text-xs tracking-widest border-b-2 border-transparent hover:border-gold-400 pb-1 transition-all" data-filter="interior">Interiors</button>
+                    <button class="filter-btn text-gray-500 hover:text-white uppercase text-xs tracking-widest border-b-2 border-transparent hover:border-gold-400 pb-1 transition-all" data-filter="event">Events</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+                <!-- Item 1: Interior -->
+                <div class="portfolio-item group relative overflow-hidden h-[400px] cursor-pointer" data-category="interior">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop" alt="Living Room" class="portfolio-img w-full h-full object-cover transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-4">
+                        <h3 class="text-2xl font-serif text-gold-400 italic transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Karen Residence</h3>
+                        <p class="text-white text-xs uppercase tracking-widest mt-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Residential Interior</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Event -->
+                <div class="portfolio-item group relative overflow-hidden h-[400px] cursor-pointer" data-category="event">
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2598&auto=format&fit=crop" alt="Wedding Table" class="portfolio-img w-full h-full object-cover transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-4">
+                        <h3 class="text-2xl font-serif text-gold-400 italic transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">The Golden Gala</h3>
+                        <p class="text-white text-xs uppercase tracking-widest mt-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Corporate Event</p>
+                    </div>
+                </div>
+
+            
